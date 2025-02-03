@@ -9,73 +9,73 @@ This repository demonstrates a simple Git workflow involving branching, merging,
 - **feature1**: A branch for feature development, created from `release1`.
 - **release1**: A release branch, created from `prod`.
 
-### Key Actions
-# Rename master branch to prod
+## Key Actions
+## Rename master branch to prod
 git branch -m master prod
 
-# Commit changes (empty commit message placeholder)
+## Commit changes (empty commit message placeholder)
 git commit -m ""
 
-# Create and switch to a new branch 'feature1'
+## Create and switch to a new branch 'feature1'
 git checkout -b feature1
 
-# Commit changes (empty commit message placeholders)
+## Commit changes (empty commit message placeholders)
 git commit -m ""
 git commit -m ""
 
-# Switch back to 'prod' branch
+## Switch back to 'prod' branch
 git checkout prod
 
-# Create and switch to a new branch 'hotfix'
+## Create and switch to a new branch 'hotfix'
 git checkout -b hotfix
 
-# Commit changes (empty commit message placeholders)
+## Commit changes (empty commit message placeholders)
 git commit -m ""
 git commit -m ""
 
-# Attempt to merge 'prod' into 'hotfix' (Already up-to-date)
+## Attempt to merge 'prod' into 'hotfix' (Already up-to-date)
 git merge prod
 
-# List branches
+## List branches
 git branch
-# Output:
-#   prod
-#   master
-#   feature1
-# * hotfix
+## Output:
+##   prod
+##   master
+##   feature1
+## * hotfix
 
-# Switch to 'prod' branch
+## Switch to 'prod' branch
 git checkout prod
 
-# Merge 'hotfix' into 'prod' (Fast-forward merge)
+## Merge 'hotfix' into 'prod' (Fast-forward merge)
 git merge hotfix
 
-# Undo last commit twice using hard reset
+## Undo last commit twice using hard reset
 git reset --hard HEAD~1
 git reset --hard HEAD~1
 
-# Create a new branch 'releasef1'
+## Create a new branch 'releasef1'
 git checkout -b releasef1
 
-# Merge 'feature1' into 'releasef1' (Fast-forward merge)
+## Merge 'feature1' into 'releasef1' (Fast-forward merge)
 git merge feature1
 
-# Switch back to 'prod' branch
+## Switch back to 'prod' branch
 git checkout prod
 
-# Merge 'releasef1' into 'prod' (Fast-forward merge)
+## Merge 'releasef1' into 'prod' (Fast-forward merge)
 git merge releasef1
 
-# List branches
+## List branches
 git branch
-# Output:
-#   master
-#   feature1
-#   releasef1
-# * prod
-#   hotfix
+## Output:
+##   master
+##   feature1
+##   releasef1
+## * prod
+##   hotfix
 
-# Merge 'hotfix' into 'prod' (Potential typo: 'format readme' is not a valid branch name)
+## Merge 'hotfix' into 'prod' (Potential typo: 'format readme' is not a valid branch name)
 git merge hotfix
 
 ## Final State
