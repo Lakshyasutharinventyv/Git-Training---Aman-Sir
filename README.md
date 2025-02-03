@@ -1,60 +1,63 @@
 # Git Workflow Visualization
 
-This repository demonstrates a simple Git workflow involving branching, merging, and tagging. The steps below outline the commands and actions performed to create the state of the repository as shown in the visualization.
+This repository demonstrates a simple Git workflow involving **branching, merging, and tagging**. The steps below outline the commands and actions performed to create the state of the repository as shown in the visualization.
 
+---
+
+## 🖼️ Git Workflow Diagram
 ![Git Workflow](https://github.com/user-attachments/assets/89ac7ada-7d50-43eb-b1b8-cb76d5522b38)
 
-## Branches
-- **prod**: A branch for production code, created from `master`.
-- **hotfix**: A branch for hotfixes, created from `prod`.
-- **feature1**: A branch for feature development, created from `release1`.
-- **release1**: A release branch, created from `prod`.
+---
 
-## Key Actions
+## 📌 Branch Structure
+- **`prod`** → Production branch, created from `master`.
+- **`hotfix`** → Hotfix branch, created from `prod`.
+- **`feature1`** → Feature development branch, created from `release1`.
+- **`release1`** → Release branch, created from `prod`.
 
-### Rename `master` branch to `prod`
+---
+
+## ⚡ Key Git Actions
+
+### 🔹 Rename `master` to `prod`
 ```sh
 git branch -m master prod
 ```
 
-### Commit changes (empty commit message placeholder)
+### 🔹 Commit changes
 ```sh
-git commit -m ""
+git commit -m "<commit message>"
 ```
 
-### Create and switch to a new branch `feature1`
+### 🔹 Create & switch to `feature1`
 ```sh
 git checkout -b feature1
 ```
 
-### Commit changes (empty commit message placeholders)
+### 🔹 Commit changes to `feature1`
 ```sh
-git commit -m ""
-git commit -m ""
+git commit -m "Feature 1 commit 1"
+git commit -m "Feature 1 commit 2"
 ```
 
-### Switch back to `prod` branch
+### 🔹 Switch to `prod` & create `hotfix`
 ```sh
 git checkout prod
-```
-
-### Create and switch to a new branch `hotfix`
-```sh
 git checkout -b hotfix
 ```
 
-### Commit changes (empty commit message placeholders)
+### 🔹 Commit changes to `hotfix`
 ```sh
-git commit -m ""
-git commit -m ""
+git commit -m "Hotfix commit 1"
+git commit -m "Hotfix commit 2"
 ```
 
-### Attempt to merge `prod` into `hotfix` (Already up-to-date)
+### 🔹 Merge `prod` into `hotfix` (No changes)
 ```sh
 git merge prod
 ```
 
-### List branches
+### 🔹 List branches
 ```sh
 git branch
 ```
@@ -66,43 +69,31 @@ git branch
 * hotfix
 ```
 
-### Switch to `prod` branch
+### 🔹 Merge `hotfix` into `prod` (Fast-forward merge)
 ```sh
 git checkout prod
-```
-
-### Merge `hotfix` into `prod` (Fast-forward merge)
-```sh
 git merge hotfix
 ```
 
-### Undo last commit twice using hard reset
+### 🔹 Undo last two commits (if needed)
 ```sh
 git reset --hard HEAD~1
 git reset --hard HEAD~1
 ```
 
-### Create a new branch `releasef1`
+### 🔹 Create `releasef1` & merge `feature1`
 ```sh
 git checkout -b releasef1
-```
-
-### Merge `feature1` into `releasef1` (Fast-forward merge)
-```sh
 git merge feature1
 ```
 
-### Switch back to `prod` branch
+### 🔹 Merge `releasef1` into `prod`
 ```sh
 git checkout prod
-```
-
-### Merge `releasef1` into `prod` (Fast-forward merge)
-```sh
 git merge releasef1
 ```
 
-### List branches
+### 🔹 Final Branch List
 ```sh
 git branch
 ```
@@ -115,19 +106,35 @@ git branch
   hotfix
 ```
 
-### Merge `hotfix` into `prod`
+### 🔹 Merge `hotfix` into `prod`
 ```sh
 git merge hotfix
 ```
-**Note:** If `format readme` was intended as part of the commit message, use `git commit -m "format readme"` instead.
 
-## Final State
-- The `prod` branch includes all changes from `hotfix` and `release1`, with a tagged commit (`PM`).
-- The `release1` branch includes merged changes from `feature1`.
-- `feature1` and `hotfix` are independent feature branches.
+> **Note:** If you intended to format a commit message, use:
+> ```sh
+> git commit -m "Format README"
+> ```
 
-### Visualization
-The graph illustrates the relationships between commits, branches, and tags, with `prod` as the current HEAD.
+---
 
+## 🚀 Final State
+- `prod` contains all changes from `hotfix` and `release1`, with a tagged commit (`PM`).
+- `release1` includes merged changes from `feature1`.
+- `feature1` and `hotfix` remain independent feature branches.
+
+### 📌 Git Visualization
 ![Pull Request Practice](https://github.com/user-attachments/assets/7e71c1f7-0719-406b-ace1-13d32b8685eb)
 
+### 🔧 Branch Pull Request Settings
+![image](https://github.com/user-attachments/assets/9dd82709-5804-4c2d-8b88-cbc2e7e99964)
+
+---
+
+### ✅ Best Practices
+- **Use meaningful commit messages** 📝
+- **Keep feature branches isolated until complete** 🔀
+- **Tag releases and significant merges** 🏷️
+- **Regularly update `prod` from `release` and `hotfix`** 🔄
+
+Enjoy version control with Git! 🚀
