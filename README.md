@@ -1,82 +1,125 @@
 # Git Workflow Visualization
 
 This repository demonstrates a simple Git workflow involving branching, merging, and tagging. The steps below outline the commands and actions performed to create the state of the repository as shown in the visualization.
-![image](https://github.com/user-attachments/assets/89ac7ada-7d50-43eb-b1b8-cb76d5522b38)
 
-### Branches
+![Git Workflow](https://github.com/user-attachments/assets/89ac7ada-7d50-43eb-b1b8-cb76d5522b38)
+
+## Branches
 - **prod**: A branch for production code, created from `master`.
 - **hotfix**: A branch for hotfixes, created from `prod`.
 - **feature1**: A branch for feature development, created from `release1`.
 - **release1**: A release branch, created from `prod`.
 
 ## Key Actions
-## Rename master branch to prod
+
+### Rename `master` branch to `prod`
+```sh
 git branch -m master prod
+```
 
-## Commit changes (empty commit message placeholder)
+### Commit changes (empty commit message placeholder)
+```sh
 git commit -m ""
+```
 
-## Create and switch to a new branch 'feature1'
+### Create and switch to a new branch `feature1`
+```sh
 git checkout -b feature1
+```
 
-## Commit changes (empty commit message placeholders)
+### Commit changes (empty commit message placeholders)
+```sh
 git commit -m ""
 git commit -m ""
+```
 
-## Switch back to 'prod' branch
+### Switch back to `prod` branch
+```sh
 git checkout prod
+```
 
-## Create and switch to a new branch 'hotfix'
+### Create and switch to a new branch `hotfix`
+```sh
 git checkout -b hotfix
+```
 
-## Commit changes (empty commit message placeholders)
+### Commit changes (empty commit message placeholders)
+```sh
 git commit -m ""
 git commit -m ""
+```
 
-## Attempt to merge 'prod' into 'hotfix' (Already up-to-date)
+### Attempt to merge `prod` into `hotfix` (Already up-to-date)
+```sh
 git merge prod
+```
 
-## List branches
+### List branches
+```sh
 git branch
-## Output:
-##   prod
-##   master
-##   feature1
-## * hotfix
+```
+**Output:**
+```
+  prod
+  master
+  feature1
+* hotfix
+```
 
-## Switch to 'prod' branch
+### Switch to `prod` branch
+```sh
 git checkout prod
+```
 
-## Merge 'hotfix' into 'prod' (Fast-forward merge)
+### Merge `hotfix` into `prod` (Fast-forward merge)
+```sh
 git merge hotfix
+```
 
-## Undo last commit twice using hard reset
+### Undo last commit twice using hard reset
+```sh
 git reset --hard HEAD~1
 git reset --hard HEAD~1
+```
 
-## Create a new branch 'releasef1'
+### Create a new branch `releasef1`
+```sh
 git checkout -b releasef1
+```
 
-## Merge 'feature1' into 'releasef1' (Fast-forward merge)
+### Merge `feature1` into `releasef1` (Fast-forward merge)
+```sh
 git merge feature1
+```
 
-## Switch back to 'prod' branch
+### Switch back to `prod` branch
+```sh
 git checkout prod
+```
 
-## Merge 'releasef1' into 'prod' (Fast-forward merge)
+### Merge `releasef1` into `prod` (Fast-forward merge)
+```sh
 git merge releasef1
+```
 
-## List branches
+### List branches
+```sh
 git branch
-## Output:
-##   master
-##   feature1
-##   releasef1
-## * prod
-##   hotfix
+```
+**Output:**
+```
+  master
+  feature1
+  releasef1
+* prod
+  hotfix
+```
 
-## Merge 'hotfix' into 'prod' (Potential typo: 'format readme' is not a valid branch name)
+### Merge `hotfix` into `prod`
+```sh
 git merge hotfix
+```
+**Note:** If `format readme` was intended as part of the commit message, use `git commit -m "format readme"` instead.
 
 ## Final State
 - The `prod` branch includes all changes from `hotfix` and `release1`, with a tagged commit (`PM`).
@@ -86,12 +129,5 @@ git merge hotfix
 ### Visualization
 The graph illustrates the relationships between commits, branches, and tags, with `prod` as the current HEAD.
 
-
-# Pull Request Practice
-![image](https://github.com/user-attachments/assets/7e71c1f7-0719-406b-ace1-13d32b8685eb)
-
-
-
-
-
+![Pull Request Practice](https://github.com/user-attachments/assets/7e71c1f7-0719-406b-ace1-13d32b8685eb)
 
